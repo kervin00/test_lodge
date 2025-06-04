@@ -18,7 +18,7 @@ A simple dashboard app built with **Laravel**, **Inertia.js**, and **Vue 3** to 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/lodge-dashboard.git](https://github.com/kervin00/test_lodge
+git clone https://github.com/kervin00/test_lodge
 ```
 ### 2. Install Dependencies
 ```bash
