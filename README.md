@@ -12,6 +12,16 @@ A simple dashboard app built with **Laravel**, **Inertia.js**, and **Vue 3** to 
 - **Calendar:** vue-cal
 
 ---
+## 🌐 **Live Demo**: [https://lodge.kevindr.com](https://lodge.kevindr.com)
+
+## Login Credentials
+
+To log in quickly for testing:
+
+- **Email**: `user@user.com`  
+- **Password**: `password`
+
+Or you can register a new user.
 
 ## 📦 Installation
 
