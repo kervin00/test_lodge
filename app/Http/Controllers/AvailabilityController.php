@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Carbon\Carbon;
 use Inertia\Inertia;
 use App\Models\Availability;
 use Illuminate\Http\Request;
@@ -22,10 +23,13 @@ public function store(Request $request)
         'number_of_guests' => 'required|integer|min:1',
     ]);
 
+    $start = Carbon::parse($request->start_date)->startOfDay();
+    $end = Carbon::parse($request->end_date)->startOfDay();
+
     Availability::create([
         'user_id' => auth()->id(),
-        'start_date' => $request->start_date,
-        'end_date' => $request->end_date,
+        'start_date' => $start,
+        'end_date' => $end,
         'number_of_guests' => $request->number_of_guests,
     ]);
 

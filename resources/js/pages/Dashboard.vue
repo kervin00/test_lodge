@@ -4,9 +4,18 @@ import { Head, useForm } from '@inertiajs/vue3'
 import VueCal from 'vue-cal'
 import 'vue-cal/dist/vuecal.css'
 import { ref } from 'vue'
-
+import toastr from 'toastr'
+import 'toastr/build/toastr.min.css'
 import Datepicker from '@vuepic/vue-datepicker'
 import '@vuepic/vue-datepicker/dist/main.css'
+
+
+toastr.options = {
+  closeButton: true,
+  progressBar: true,
+  positionClass: 'toast-top-right',
+  timeOut: '3000'
+}
 
 const props = defineProps({
   availabilities: Array
@@ -22,35 +31,25 @@ const events = ref(
   }))
 )
 
-
 const form = useForm({
   start_date: '',
   end_date: '',
   number_of_guests: 1
 })
 
-function formatDate(date: string | Date) {
-  const d = new Date(date)
-  return d.toISOString().slice(0, 19).replace('T', ' ')
-}
 
 function submit() {
-  const start = formatDate(form.start_date)
-  const end = formatDate(form.end_date)
-
-  form.start_date = start
-  form.end_date = end
-
   form.post('/availability', {
     preserveScroll: true,
     onSuccess: () => {
       events.value.push({
-        start,
-        end,
+        start: form.start_date,
+        end: form.end_date,
         title: `${form.number_of_guests} guest${form.number_of_guests > 1 ? 's' : ''}`,
         class: form.number_of_guests > 0 ? 'booked-event' : ''
-        })
+      })
       form.reset()
+      toastr.success('Availability added successfully!')
     }
   })
 }
