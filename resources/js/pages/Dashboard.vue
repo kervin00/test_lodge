@@ -23,11 +23,10 @@ const props = defineProps({
 
 const events = ref(
   props.availabilities.map((a: any) => ({
-    start: a.start_date,
-    end: a.end_date,
+    start: new Date(a.start_date),
+    end: new Date(a.end_date),
     title: `${a.number_of_guests} guest${a.number_of_guests > 1 ? 's' : ''}`,
     class: a.number_of_guests > 0 ? 'booked-event' : ''
-
   }))
 )
 
@@ -43,8 +42,8 @@ function submit() {
     preserveScroll: true,
     onSuccess: () => {
       events.value.push({
-        start: form.start_date,
-        end: form.end_date,
+        start: new Date(form.start_date),
+        end: new Date(form.end_date),
         title: `${form.number_of_guests} guest${form.number_of_guests > 1 ? 's' : ''}`,
         class: form.number_of_guests > 0 ? 'booked-event' : ''
       })
@@ -73,6 +72,8 @@ function submit() {
             auto-apply
             calendar-class="border rounded"
             input-class="hidden"
+            model-type="format"
+            format="yyyy-MM-dd"
           />
         </div>
         <div>
@@ -83,6 +84,8 @@ function submit() {
             auto-apply
             calendar-class="border rounded"
             input-class="hidden"
+            model-type="format"
+  format="yyyy-MM-dd"
           />
         </div>
         <div>

@@ -22,9 +22,13 @@ public function store(Request $request)
         'end_date' => 'required|date|after_or_equal:start_date',
         'number_of_guests' => 'required|integer|min:1',
     ]);
+$start = Carbon::parse($request->start_date)->startOfDay();
+$end = Carbon::parse($request->end_date)->startOfDay();
 
-    $start = Carbon::parse($request->start_date)->startOfDay();
-    $end = Carbon::parse($request->end_date)->startOfDay();
+
+
+
+
 
     Availability::create([
         'user_id' => auth()->id(),
