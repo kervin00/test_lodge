@@ -6,11 +6,10 @@ A simple dashboard app built with **Laravel**, **Inertia.js**, and **Vue 3** to 
 
 ## 🚀 Tech Stack
 
-- **Backend:** Laravel 10+
+- **Backend:** Laravel 12
 - **Frontend:** Inertia.js + Vue 3
 - **Styling:** Tailwind CSS
 - **Calendar:** vue-cal
-- **Deployment Ready:** Vercel / Render
 
 ---
 
